@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | Création{% endblock%}
+
+{% block body %}
+    <h2>Formulation du savon</h2>
+    {{ form_start(savonForm) }}
+    {{ form_widget(savonForm) }}
+    <button>Calculer</button>
+    {{ form_end(savonForm) }}
+
+{% endblock %}
