@@ -21,12 +21,6 @@ class SavonType extends AbstractType
             ->add('description')
             ->add('surgraissage')
             ->add('concentrationSoude')
-            ->add('huile',EntityType::class,[
-                'label'=>'huile',
-                'class'=>Huile::class,
-                'choice_label'=>'name'
-            ])
-
         ;
     }
 

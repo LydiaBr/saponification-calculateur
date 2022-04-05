@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | Détail{% endblock%}
+
+{% block body %}
+    <h2>{{ savon.nom }} </h2>
+    <div>{{ savon.description}}</div>
+    <div>le {{ savon.dateCreation | date('d/M/Y') }}</div>
+    <div>Surgraissage : {{ savon.surgraissage }}</div>
+    <div>Concentration de la lessive de soude : {{ savon.concentrationSoude }}</div>
+
+{% endblock %}

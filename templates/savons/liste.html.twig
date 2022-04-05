@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | Liste des savons{% endblock%}
+
+{% block body %}
+    <h2>Liste des savons</h2>
+    <section class="savons-liste">
+        {% for savon in savons %}
+            <article>
+                <a href="{{ path('savons_detail', {'id': savon.id}) }}"
+                   title="détails du savon">{{ savon.nom }}</a>
+            </article>
+        {% endfor %}
+    </section>
+
+
+
+
+{% endblock %}
