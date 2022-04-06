@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | Création{% endblock%}
+
+{% block body %}
+    <h2>Formulation du savon</h2>
+
+
+    {{ form_start(savonForm) }}
+
+    {{ form_widget(savonForm) }}
+
+    {#
+    <select>
+        {% for huile in huiles %}
+            <option>{{ huile.nom }}</option>
+        {% endfor %}
+    </select>
+    <label for="masseHuile" id="masseHuile">Masse d'huile : <input id="masseHuile"> grammes</label>
+    <button type="button" name="ajouterHuile">Ajouter une huile</button>
+    <button type="button" name="calculerSoude">Calculer la soude</button>
+    #}
+    <label for="masseHuile" id="masseHuile"></label>
+    <input id="masseHuile" name="masseHuile">grammes</br>
+    <button>Calculer la masse de soude</button>
+    {{ form_end(savonForm) }}
+
+{% endblock %}

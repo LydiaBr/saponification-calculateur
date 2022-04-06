@@ -22,9 +22,9 @@ class SavonController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstrac
     /**
      * @Route("/creation", name="savons_creation")
      */
-    public function creation(Request $request,
+    public function creation(Request                $request,
                              EntityManagerInterface $entityManager,
-                            HuileRepository $huileRepository):Response
+                             HuileRepository        $huileRepository): Response
     {
         $huiles = $huileRepository->findAll();
 
@@ -36,7 +36,8 @@ class SavonController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstrac
         $savonForm = $this->createForm(SavonType::class, $savon);
         $savonForm->handleRequest($request);
 
-        if($savonForm->isSubmitted() && $savonForm->isValid()){
+
+        if ($savonForm->isSubmitted() && $savonForm->isValid()) {
             $entityManager->persist($savon);
             $entityManager->flush();
 
@@ -45,19 +46,21 @@ class SavonController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstrac
             return $this->redirectToRoute("main_accueil");
         }
 
-        return $this->render("savons/creation.html.twig",[
-            "savonForm"=>$savonForm->createView(),
-            "huiles"=>$huiles
+        return $this->render("savons/creation.html.twig", [
+            "savonForm" => $savonForm->createView(),
+            "huiles" => $huiles,
+            "savon"=>$savon
         ]);
     }
+
     /**
      * @Route("/detail/{id}", name="savons_detail")
      */
     public function detail(int $id, SavonRepository $savonRepository): Response
     {
         $savon = $savonRepository->find($id);
-        return $this->render("savons/detail.html.twig",[
-            "savon"=>$savon
+        return $this->render("savons/detail.html.twig", [
+            "savon" => $savon
         ]);
     }
 
@@ -67,9 +70,43 @@ class SavonController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstrac
     public function liste(SavonRepository $savonRepository): Response
     {
         $savons = $savonRepository->findAll();
-        return $this->render("savons/liste.html.twig",[
-            "savons"=>$savons
+        return $this->render("savons/liste.html.twig", [
+            "savons" => $savons
         ]);
     }
 
+    /**
+     * @Route("/creation/calcul", name="savons_calculSoude")
+     */
+    public function calculSoude(Request                $request,
+                                EntityManagerInterface $entityManager,
+                                HuileRepository        $huileRepository): Response
+    {
+        $huiles = $huileRepository->findAll();
+
+
+        $savon = new Savon();
+        $savon->setDateCreation(new \DateTime());
+
+
+        $savonForm = $this->createForm(SavonType::class, $savon);
+        $savonForm->handleRequest($request);
+
+
+        if ($savonForm->isSubmitted() && $savonForm->isValid()) {
+            $masseSoude = 50;
+
+
+            $savon->setMasseSoude($masseSoude);
+
+            return $this->redirectToRoute("savons_calculSoude");
+        }
+        return $this->render("savons/calculerSoude.html.twig", [
+            "savonForm" => $savonForm->createView(),
+            "huiles" => $huiles,
+            "savon"=>$savon
+        ]);
+
+
+    }
 }

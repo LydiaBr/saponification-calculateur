@@ -2,11 +2,13 @@
 
 namespace App\Form;
 
-use App\Entity\Category;
+
 use App\Entity\Huile;
 use App\Entity\Savon;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -21,7 +23,14 @@ class SavonType extends AbstractType
             ->add('description')
             ->add('surgraissage')
             ->add('concentrationSoude')
-        ;
+            ->add('huileChoisie',EntityType::class,[
+                'label'=>'Huile',
+                'class'=>Huile::class,
+                'choice_label'=>'nom'
+                ]);
+
+
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -10,17 +10,17 @@
 
     {{ form_widget(savonForm) }}
 
-
+{#
         <select>
             {% for huile in huiles %}
                 <option>{{ huile.nom }}</option>
             {% endfor %}
         </select>
         <label for="masseHuile" id="masseHuile">Masse d'huile : <input id="masseHuile"> grammes</label>
-        <button type="button">Ajouter une huile</button>
-        <button type="button">Calculer la soude</button>
-
-
+        <button type="button" name="ajouterHuile">Ajouter une huile</button>
+        <button type="button" name="calculerSoude">Calculer la soude</button>
+#}
+    <div>Masse de soude à utiliser : {{ savon.masseSoude }}</div>
     <button type="submit">Ajouter le savon</button>
     {{ form_end(savonForm) }}
 
