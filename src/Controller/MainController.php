@@ -21,5 +21,13 @@ class MainController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstract
         return $this->render("main/accueil.html.twig");
     }
 
+    /**
+     * @Route("/contact", name="main_contact")
+     */
+    public function contact(): \Symfony\Component\HttpFoundation\Response
+    {
+        return $this->render("main/contact.html.twig");
+    }
+
 
 }

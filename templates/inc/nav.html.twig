@@ -1,6 +1,20 @@
 <nav class="header-nav">
     <a href="{{ path('main_accueil') }}" title="Accueil">Accueil</a>
-    <a href="{{ path('savons_calculSoude') }}" title="Créer un savon">Créer un savon</a>
     <a href="{{ path('savons_liste') }}" title="Liste des savons">Liste des savons</a>
-    <a href="#" title="Contact">Contact</a>
+
+    {% if app.user %}
+        <a href="{{ path('savons_calculSoude') }}" title="Créer un savon">Créer un savon</a>
+        <a href="{{ path('app_logout') }}" title="Déconnection">Déconnection ({{ app.user.pseudo }})</a>
+
+        {% if is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('admin_dashboard') }}" title="Admin dashboard">Admin</a>
+        {% endif %}
+
+    {% else %}
+        <a href="{{ path('app_login') }}" title="Connection">Connection</a>
+        <a href="{{ path('app_register') }}" title="S'enregistrer">S'enregistrer</a>
+    {% endif %}
+
+
+    <a href="{{ path('main_contact') }}" title="Contact">Contact</a>
 </nav>
