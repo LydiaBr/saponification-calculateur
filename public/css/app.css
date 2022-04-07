@@ -1,0 +1,44 @@
+body{
+    background: linear-gradient(#f5c2c7, white);
+}
+nav{
+    text-decoration: unset;
+    text-align: right;
+    padding: 1rem;
+    border-style: double;
+    border-radius: 10px;
+}
+nav a{
+    color: inherit;
+    text-decoration: none;
+    margin-right: 1rem;
+}
+h1{
+    text-align: center;
+    padding: 1rem;
+}
+h2{
+    padding-top: 1rem;
+}
+input,
+textarea,
+select {
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    width: 150px;
+    max-width: 50%;
+}
+label{
+    margin: 1rem;
+}
+footer{
+    text-align: end;
+}
+.btn-calculSoude,
+.btn-creerSavon,
+.btn-senregistrer{
+    border-radius: 10px;
+    background-color: lightgray;
+    border-color: white;
+    padding: 0.5rem;
+}

@@ -3,11 +3,11 @@
 {% block title %}{{ parent() }} | S'enregistrer{% endblock %}
 
 {% block body %}
-    <h1>Créer un compte</h1>
+    <h2>Créer un compte</h2>
 
     {{ form_start(registrationForm) }}
     {{ form_widget(registrationForm) }}
 
-        <button type="submit">S'enregistrer</button>
+        <button type="submit" class="btn-senregistrer">S'enregistrer</button>
     {{ form_end(registrationForm) }}
 {% endblock %}

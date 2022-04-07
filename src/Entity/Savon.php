@@ -54,11 +54,6 @@ class Savon
      */
     private $huiles;
 
-    /**
-     * @ORM\Column(type="object")
-     */
-    private $huileChoisie;
-
 
     public function __construct()
     {
@@ -165,18 +160,5 @@ class Savon
 
         return $this;
     }
-
-    public function getHuileChoisie(): ?object
-    {
-        return $this->huileChoisie;
-    }
-
-    public function setHuileChoisie(object $huileChoisie)
-    {
-        $this->huileChoisie = $huileChoisie;
-
-        return $this;
-    }
-
 
 }
