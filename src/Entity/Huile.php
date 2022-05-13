@@ -40,7 +40,8 @@ class Huile
     private $indiceIode;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Savon::class, mappedBy="huiles")
+     *
+     * @ORM\ManyToMany(targetEntity=Savon::class)
      */
     private $savons;
 
@@ -109,7 +110,7 @@ class Huile
     {
         return $this->savons;
     }
-
+/*
     public function addSavon(Savon $savon): self
     {
         if (!$this->savons->contains($savon)) {
@@ -127,5 +128,32 @@ class Huile
         }
 
         return $this;
+    }*/
+
+    public function addSavon(Savon $savon)
+    {
+        if (!$this->savons->contains($savon)) {
+            $this->savons[] = $savon;
+            $savon->addHuile($this);
+        }
+
+        return $this;
     }
+
+    public function removeSavon(Savon $savon)
+    {
+        if ($this->savons->contains($savon)) {
+            $this->savons->removeElement($savon);
+            // set the owning side to null (unless already changed)
+            if ($savon->getHuiles() === $this) {
+                $savon->addHuile(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+
+
 }

@@ -26,12 +26,12 @@ class SavonController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstrac
                              EntityManagerInterface $entityManager,
                              HuileRepository        $huileRepository): Response
     {
-        $huiles = $huileRepository->findAll();
-
-
         $savon = new Savon();
         $savon->setDateCreation(new \DateTime());
 
+        $huile = $huileRepository->findOneBy(['nom'=>'Olive']);
+
+        $savon->addHuile($huile);
 
         $savonForm = $this->createForm(SavonType::class, $savon);
         $savonForm->handleRequest($request);
@@ -48,7 +48,6 @@ class SavonController extends \Symfony\Bundle\FrameworkBundle\Controller\Abstrac
 
         return $this->render("savons/creation.html.twig", [
             "savonForm" => $savonForm->createView(),
-            "huiles" => $huiles,
             "savon"=>$savon
         ]);
     }

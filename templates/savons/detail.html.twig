@@ -8,7 +8,14 @@
     <div>le {{ savon.dateCreation | date('d/M/Y') }}</div>
     <div>Surgraissage : {{ savon.surgraissage }}</div>
     <div>Concentration de la lessive de soude : {{ savon.concentrationSoude }}</div>
-    <div>Huile choisie : {{ savon.huiles }}</div>
+    <div>Huile utilisée : </div>
+        {% for huile in savon.huiles %}
+            {{ huile.nom }}
+        {% endfor %}
     <div>Masse de soude : {{ savon.masseSoude}}g</div>
+
+
+
+
 
 {% endblock %}

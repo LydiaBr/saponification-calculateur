@@ -26,7 +26,8 @@ class SavonType extends AbstractType
             ->add('huiles',EntityType::class,[
                 'label'=>'Huile',
                 'class'=>Huile::class,
-                'choice_label'=>'nom'
+                'choice_label'=>'nom',
+                'mapped'=>false
             ]);
 
 
@@ -36,9 +37,16 @@ class SavonType extends AbstractType
     }
 
     public function configureOptions(OptionsResolver $resolver): void
-    {
+    {/*
         $resolver->setDefaults([
             'data_class' => Savon::class,
-        ]);
+        ]);*/
+
+        $resolver->setDefaults(array(
+            'data_class' => \App\Entity\Savon::class,
+            'cascade_validation' => true
+        ));
+
+
     }
 }

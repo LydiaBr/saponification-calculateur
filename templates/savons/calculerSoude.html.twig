@@ -8,21 +8,35 @@
 
     {{ form_start(savonForm) }}
 
-    {{ form_widget(savonForm) }}
+    {{ form_row(savonForm.nom) }}
+    {{ form_row(savonForm.description) }}
+    {{ form_row(savonForm.surgraissage) }}
+    {{ form_row(savonForm.concentrationSoude) }}
 
-    {#
-    <select>
-        {% for huile in huiles %}
-            <option>{{ huile.nom }}</option>
-        {% endfor %}
-    </select>
-    <label for="masseHuile" id="masseHuile">Masse d'huile : <input id="masseHuile"> grammes</label>
-    <button type="button" name="ajouterHuile">Ajouter une huile</button>
-    <button type="button" name="calculerSoude">Calculer la soude</button>
-    #}
-    <label for="masseHuile" id="masseHuile"></label>
-    <input id="masseHuile" name="masseHuile">grammes</br>
+    <div class="container-fluid ligne_huile">
+        <div class="row-cols-6">
+            {{ form_row(savonForm.huiles) }}
+        </div>
+        <div class="row-cols-6">
+            <label for="masseHuile" id="masseHuile"></label>
+            <input id="masseHuile" name="masseHuile"> grammes</br>
+        </div>
+    </div>
+
+    <a type="button" class="btn-ajoutIngredient">Ajouter un ingrédient</a>
     <button class="btn-calculSoude">Calculer la masse de soude</button>
     {{ form_end(savonForm) }}
 
 {% endblock %}
+
+
+{#
+<select>
+    {% for huile in huiles %}
+        <option>{{ huile.nom }}</option>
+    {% endfor %}
+</select>
+<label for="masseHuile" id="masseHuile">Masse d'huile : <input id="masseHuile"> grammes</label>
+<button type="button" name="ajouterHuile">Ajouter une huile</button>
+<button type="button" name="calculerSoude">Calculer la soude</button>
+#}

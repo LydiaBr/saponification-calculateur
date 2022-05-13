@@ -50,7 +50,8 @@ class Savon
     private $dateCreation;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Huile::class, inversedBy="savons")
+     *
+     * @ORM\ManyToMany(targetEntity=Huile::class)
      */
     private $huiles;
 
